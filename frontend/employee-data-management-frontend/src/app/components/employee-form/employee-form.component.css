@@ -78,6 +78,13 @@ label {
     font-size: 15px;
 }
 
+/* Make the * in required fields red */
+label.required::after {
+    content: " *";
+    color: red;
+    margin-left: 2px;
+}
+
 /* Required star */
 .required-asterisk {
     color: #f64e60;
