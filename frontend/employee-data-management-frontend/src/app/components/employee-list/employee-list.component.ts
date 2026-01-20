@@ -97,6 +97,23 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
+  downloadPdf(){
+    this.service.downloadEmployeePdf().subscribe({
+      next: (blob) =>{
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'employee.pdf';
+        a.click();
+
+        window.URL.revokeObjectURL(url);
+      },
+      error: () =>{
+        this.toast.show('Failed to download PDF','error');
+      }
+    });
+  }
+
   search() {
     const term = this.searchTerm.trim().toLowerCase();
     this.filteredEmployees = this.employees.filter(emp =>
