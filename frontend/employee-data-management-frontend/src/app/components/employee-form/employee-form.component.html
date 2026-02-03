@@ -4,7 +4,7 @@
     <!-- First & Last Name -->
     <div class="row">
       <div class="form-group">
-        <label>First Name *</label>
+        <label class="required">First Name</label>
         <input type="text" formControlName="firstName" maxlength="50"
           [class.input-error]="f['firstName'].invalid && f['firstName'].touched"
           [class.max-reached]="f['firstName'].value?.length === 50" placeholder="Enter first name">
@@ -19,7 +19,7 @@
       </div>
 
       <div class="form-group">
-        <label>Last Name *</label>
+        <label class="required">Last Name</label>
         <input type="text" formControlName="lastName" maxlength="50"
           [class.input-error]="f['lastName'].invalid && f['lastName'].touched"
           [class.max-reached]="f['lastName'].value?.length === 50" placeholder="Enter last name">
@@ -37,7 +37,7 @@
     <!-- Date of Birth & Age -->
     <div class="row">
       <div class="form-group">
-        <label>Date of Birth *</label>
+        <label class="required">Date of Birth</label>
         <input type="date" formControlName="dateOfBirth" [max]="today"
           [class.input-error]="f['dateOfBirth'].invalid && f['dateOfBirth'].touched">
         <div class="error" *ngIf="f['dateOfBirth'].touched && f['dateOfBirth'].errors">
@@ -55,7 +55,7 @@
     <!-- Mobile & Email -->
     <div class="row">
       <div class="form-group">
-        <label>Mobile *</label>
+        <label class="required">Mobile</label>
         <input type="tel" formControlName="mobile" maxlength="10"
           [class.input-error]="(f['mobile'].invalid || mobileTaken) && (f['mobile'].touched || f['mobile'].dirty)"
           placeholder="Enter 10 digit mobile" (keypress)="allowDigitsOnly($event)" (paste)="handleMobilePaste($event)">
@@ -68,14 +68,13 @@
       </div>
 
       <div class="form-group">
-        <label>Email *</label>
+        <label class="required">Email</label>
         <input type="email" formControlName="email" maxlength="254"
           [class.input-error]="(f['email'].invalid || emailTaken) && (f['email'].touched || f['email'].dirty)"
           [class.max-reached]="f['email'].value?.length === 254" placeholder="Enter email">
-
         <div class="error" *ngIf="(f['email'].touched || f['email'].dirty) && (f['email'].errors || emailTaken)">
-          <span *ngIf="f['email'].errors?.['required']">Email is required</span>
-          <span *ngIf="f['email'].errors?.['pattern']">Enter a valid email</span>
+          <span *ngIf="f['email'].errors?.['required']  && f['email'].value?.length < 254">Email is required</span>
+          <span *ngIf="f['email'].errors?.['pattern']  && f['email'].value?.length < 254">Enter a valid email</span>
           <span *ngIf="emailTaken">Email already exists</span>
         </div>
         <div class="hint error" *ngIf="f['email'].value?.length === 254">Maximum 254 characters allowed</div>
@@ -85,7 +84,7 @@
     <!-- Address & Gender -->
     <div class="row full-width">
       <div class="form-group">
-        <label>Address 1 *</label>
+        <label class="required">Address 1</label>
         <textarea formControlName="address1" maxlength="255"
           [class.input-error]="f['address1'].invalid && f['address1'].touched"
           [class.max-reached]="f['address1'].value?.length === 255"></textarea>
@@ -112,7 +111,7 @@
 
     <div class="row">
       <div class="form-group">
-        <label>Gender *</label>
+        <label class="required">Gender</label>
         <div class="gender-group">
           <label><input type="radio" formControlName="gender" value="Male"> Male</label>
           <label><input type="radio" formControlName="gender" value="Female"> Female</label>

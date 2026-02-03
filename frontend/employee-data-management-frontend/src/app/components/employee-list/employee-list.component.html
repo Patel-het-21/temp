@@ -5,7 +5,11 @@
     <div class="search-container">
       <input type="text" [(ngModel)]="searchTerm" placeholder="Search by name..." (input)="search()">
     </div>
-    <div><button class="btn-add" (click)="addEmployee()">+ Add Employee</button></div>
+
+    <div class="action-buttons">
+      <button class="btn-add" (click)="addEmployee()">+ Add Employee</button>
+      <button class="btn-pdf" (click)="downloadPdf()">⬇ Download PDF</button>
+    </div>
   </div>
 
   <div class="table-responsive">

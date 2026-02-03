@@ -41,4 +41,12 @@ export class EmployeeService {
 
     return this.http.get<boolean>(`${this.baseUrl}/check-mobile`, { params });
   }
+
+  downloadEmployeePdf(): Observable<Blob> {
+    return this.http.get(
+      `${this.baseUrl}/report/pdf`,
+      { responseType: 'blob' }
+    );
+  }
+
 }

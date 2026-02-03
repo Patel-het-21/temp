@@ -49,6 +49,12 @@ h1 {
     border: 1px solid #ccc;
 }
 
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
 .btn-add {
     background: linear-gradient(45deg, #4a90e2, #50b6ff);
     color: #fff;
@@ -63,6 +69,23 @@ h1 {
 .btn-add:hover {
     box-shadow: 0 12px 25px rgba(74, 144, 226, 0.3);
 }
+
+/* different color for PDF button */
+.btn-pdf {
+    background: linear-gradient(45deg, #28a745, #5cd65c);
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-pdf:hover {
+    box-shadow: 0 12px 25px rgba(40, 167, 69, 0.35);
+}
+
 
 /* ================= TABLE STYLES ================= */
 .table-responsive {
